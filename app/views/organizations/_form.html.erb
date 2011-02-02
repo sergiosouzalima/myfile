@@ -1,0 +1,16 @@
+
+<div class="group">
+  <%= f.input :name, 
+              :label_html => { :class => :label }, 
+              :input_html => { :class => 'text_field' },
+              :hint => 'Informe um texto para este campo.',
+              :hint_html => { :class => :description }  %>
+</div>
+        
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+  </button>
+  <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+	<%= link_to t("web-app-theme.cancel", :default => "Cancel"), organizations_path, :class => "text_button_padding link_button" %>
+</div>

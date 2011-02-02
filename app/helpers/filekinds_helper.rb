@@ -1,0 +1,2 @@
+module FilekindsHelper
+end

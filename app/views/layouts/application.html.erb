@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My File - People, Places & Organizations</title>
+  <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/warehouse/style", "web-app-theme/override", :cache => true %>
+  <%= javascript_include_tag :defaults, :cache => true %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">My File - People, Places & Organizations</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+  	        <% if user_signed_in? -%>
+	          <li>	          
+	            <!-- link_to  t("web-app-theme.settings", :default => "Settings"), 
+	                root_path -->
+	          </li>
+ 	          <li>	          
+	            <%= link_to  t("web-app-theme.profile", :default => "My Info") + ' (' + current_user.email  + ') ' , 
+	                edit_user_registration_path %>
+	          </li>
+	          <li>
+	            <%= link_to 'Sign out', destroy_user_session_path %>
+	          </li>
+	        <% else %>
+            <li><%= link_to t("web-app-theme.login", :default => "Log in"), new_user_session_path %></li>
+	        <% end -%>
+        </ul>
+      </div>
+	  <div id="main-navigation">
+	    <ul class="wat-cf"> 
+	      <li class="<%= controller.controller_path == 'pages' ? 'active' : '' %>">
+		      <a href="<%= root_path %>">Home</a>
+		  </li>	
+		  <!--
+		  <li class="<%= controller.controller_path == 'filekinds' ? 'active' : '' %>">
+		 	<a href="<%= filekinds_path %>"><%= Filekind.model_name.human %></a>
+		  </li>
+		  <li class="<%= controller.controller_path == 'organizations' ? 'active' : '' %>">
+			<a href="<%= organizations_path %>"><%= Organization.model_name.human %></a>
+		  </li>
+	      <li class="<%= controller.controller_path == 'occupations' ? 'active' : '' %>">
+		    <a href="<%= occupations_path %>"><%= Occupation.model_name.human %></a>
+		  </li>
+		  -->
+        </ul>
+	  </div>
+    </div>    
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+      <div id="main">
+        <%= yield %>
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; <%= Time.now.year %> My File - People, Places & Organizations.</p>
+          </div>      
+        </div>
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>    
+  </div>
+</body>
+</html>
