@@ -121,10 +121,12 @@ body {
   position: absolute;
   top: 0px;
   right: 20px;  
+  float: right; /* testing */
 }
 
 #main-navigation {
   width: 100%;
+
 }
 
 #user-navigation ul, #main-navigation ul, .secondary-navigation ul, #sidebar ul.navigation {
