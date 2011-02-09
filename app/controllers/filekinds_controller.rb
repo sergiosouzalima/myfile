@@ -4,13 +4,8 @@ class FilekindsController < ApplicationController
   # GET /filekinds
   # GET /filekinds.xml
   def index
-    #@filekinds = Filekind.paginate :page => params[:page], :per_page => 5
-    @filekinds = Filekind.search(params[:search]).
-                   paginate(:per_page => 5, :page => params[:page])  
-    #respond_to do |format|
-    #  format.html # index.html.erb
-    #  format.xml  { render :xml => @filekinds }
-    #end
+    @filekinds = Filekind.accessible_by(current_ability).search(params[:search]).
+                paginate(:per_page => 5, :page => params[:page])                    
   end
 
   # GET /filekinds/1
@@ -44,6 +39,7 @@ class FilekindsController < ApplicationController
   # POST /filekinds.xml
   def create
     @filekind = Filekind.new(params[:filekind])
+    @filekind.user_id = current_user.id
 
     respond_to do |format|
       if @filekind.save

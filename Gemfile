@@ -4,6 +4,7 @@ gem 'rails', '3.0.0'
 gem 'will_paginate', '>=3.0.pre'
 gem 'devise'
 gem "simple_form"
+gem "cancan"
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
