@@ -48,18 +48,19 @@ Myfile::Application.configure do
   config.active_support.deprecation = :notify
 
 	# Setting Mailer host param
-	# config.action_mailer.default_url_options = { :host => 'localhost:3000' } 
   config.action_mailer.default_url_options = 
     { :host => Rails.env.production? ? 'myfile.webbyapp.com' : 'localhost:3000' }
-
-	config.action_mailer.delivery_method = :smtp
-	config.action_mailer.smtp_settings = {
-	  :enable_starttls_auto => true,
-	  :address => 'smtp.gmail.com',
-	  :port => '587',
-	  :authentication => :plain,
-	  :domain => 'myfile.webbyapp.com',
-	  :user_name => 'sergiosouzalima@gmail.com',
-	  :password => 'madrificanaespanha'
-	}  
+	
+  config.action_mailer.default_content_type = "text/html"
+  config.action_mailer.delivery_method = :smtp   
+  config.action_mailer.smtp_settings = { 
+        :address => "smtp.gmail.com", 
+        :port => 587, 
+        :domain => 'myfile.webbyapp.com', 
+        :user_name => 'sergiosouzalima@gmail.com', 
+        :password => 'madrificanaespanha', 
+        :authentication => 'login', 
+        :enable_starttls_auto => false 
+      }
+	
 end
