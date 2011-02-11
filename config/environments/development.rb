@@ -29,7 +29,7 @@ Myfile::Application.configure do
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => 'smtp.gmail.com',
-    :port => '587',
+    :port => '587',   
     :authentication => :plain,
     :domain => 'myfile.webbyapp.com',
     :user_name => 'sergiosouzalima@gmail.com',

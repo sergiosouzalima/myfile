@@ -57,6 +57,7 @@ Myfile::Application.configure do
         :address => "smtp.gmail.com", 
         :port => 587, 
         :domain => 'myfile.webbyapp.com', 
+        :tls => true,
         :user_name => 'sergiosouzalima@gmail.com', 
         :password => 'madrificanaespanha', 
         :authentication => 'login', 
