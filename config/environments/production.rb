@@ -60,7 +60,7 @@ Myfile::Application.configure do
         :user_name => 'sergiosouzalima@gmail.com', 
         :password => 'madrificanaespanha', 
         :authentication => 'login', 
-        :enable_starttls_auto => false 
+        :enable_starttls_auto => true 
       }
 	
 end
