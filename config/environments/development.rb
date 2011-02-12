@@ -33,7 +33,7 @@ Myfile::Application.configure do
     :authentication => :plain,
     :domain => 'myfile.webbyapp.com',
     :user_name => 'sergiosouzalima@gmail.com',
-    :password => 'madrificanaespanha'
+    :password => 'sergiolima-2011'
   }
    
 

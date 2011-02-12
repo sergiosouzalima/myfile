@@ -46,6 +46,8 @@ Myfile::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  config.action_mailer.raise_delivery_errors = true
+  config.action_dispatch.best_standards_support = :builtin
 
 	# Setting Mailer host param
   config.action_mailer.default_url_options = 
@@ -53,15 +55,14 @@ Myfile::Application.configure do
 	
   config.action_mailer.default_content_type = "text/html"
   config.action_mailer.delivery_method = :smtp   
-  config.action_mailer.smtp_settings = { 
-        :address => "smtp.gmail.com", 
-        :port => 587, 
-        :domain => 'myfile.webbyapp.com', 
-        :tls => true,
-        :user_name => 'sergiosouzalima@gmail.com', 
-        :password => 'madrificanaespanha', 
-        :authentication => 'login', 
-        :enable_starttls_auto => true 
-      }
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => 'smtp.gmail.com',
+    :port => '587',   
+    :authentication => :plain,
+    :domain => 'myfile.webbyapp.com',
+    :user_name => 'sergiosouzalima@gmail.com',
+    :password => 'sergiolima-2011'
+  }
 	
 end
