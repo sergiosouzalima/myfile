@@ -53,14 +53,13 @@ Myfile::Application.configure do
   config.action_mailer.default_url_options = 
     { :host => Rails.env.production? ? 'myfile.webbyapp.com' : 'localhost:3000' }
 	
-  config.action_mailer.default_content_type = "text/html"
-  config.action_mailer.delivery_method = :smtp   
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => 'smtp.gmail.com',
     :port => '587',   
     :authentication => :plain,
-    :domain => 'myfile.webbyapp.com',
+    :domain => 'gmail.com',
     :user_name => 'sergiosouzalima@gmail.com',
     :password => 'sergiolima-2011'
   }
