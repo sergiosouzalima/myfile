@@ -1,12 +1,24 @@
-<h2>Esqueceu sua senha?</h2>
+<div ="box">
+	<div class="block" id="block-login">
+        <h2>Esqueceu sua senha? </h2>
+		<div class="content login">
+			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), 
+			    :html => { :method => :post }) do |f| %>
+				<br />
+				<div class="group wat-cf">
+					<div class="left">
+						<%= f.label :email, t("activerecord.attributes.user.email", :default => "Email"), 
+						    :class => "label right" %>
+					</div>
+					<div class="right">
+						<%= f.text_field :email, :class => 'text_field' %>
+					</div>
+				</div>
+			  <p><%= f.submit "Envie-me instrucoes de senha reinicializada" %></p>
+							
+			<% end %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
-
-  <p><%= f.submit "Envie-me instrucoes de senha reinicializada" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+			<%= render :partial => "devise/shared/links" %>
+		</div>		
+	</div>
+</div>

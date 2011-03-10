@@ -18,10 +18,10 @@ pt-BR:
       signed_in: 'Conectado com sucesso.'
       signed_out: 'Desconectado com sucesso.'
     passwords:
-      send_instructions: 'Dentro de minutos, você receberá um email com as instruções de reinicialização da senha.'
+      send_instructions: 'Dentro de minutos, você receberá um email com as instruções de reinicialização da senha. Verifique também na area de spam da sua caixa postal.'
       updated: 'A sua senha foi alterada com sucesso. Agora está conectado.'
     confirmations:
-      send_instructions: 'Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.'
+      send_instructions: 'Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta. Verifique também na area de spam da sua caixa postal.'
       confirmed: 'A sua conta foi confirmada com sucesso. Agora está conectado.'
     registrations:
       signed_up: 'Registrado com sucesso. Se o envio de email está habilitado, a confirmação foi enviada por email.'

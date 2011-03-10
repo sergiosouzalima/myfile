@@ -33,7 +33,7 @@ Myfile::Application.configure do
     :authentication => :plain,
     :domain => 'gmail.com',
     :user_name => 'sergiosouzalima@gmail.com',
-    :password => 'sergiolima-2011'
+    :password => 'xxxxxx'
   }
    
 

@@ -1,18 +1,44 @@
-<h2>Registra</h2>
+<div ="box">
+	<div class="block" id="block-login">
+        <h2>Cadastramento</h2>
+		<div class="content login">
+			
+			<%= simple_form_for(resource, :as => resource_name, 
+			    :url => registration_path(resource_name), :html => { :class => :form } ) do |f| %>
+				<br />
+				
+				<div class="group">
+				  <%= f.input :email, 
+				              :label_html => { :class => :label }, 
+				              :input_html => { :class => 'text_field' },
+				              :hint => 'Informe seu email.',
+				              :hint_html => { :class => :description }  %>
+				</div>
+				
+				<div class="group">
+				  <%= f.input :password, 
+							  :label_html => { :class => :label }, 
+							  :input_html => { :class => 'text_field' },
+							  :hint => 'Informe a nova senha.',
+							  :hint_html => { :class => :description }  %>
+				
+				</div>
+				
+				<div class="group">
+				  <%= f.input :password_confirmation, 
+							  :label_html => { :class => :label }, 
+							  :input_html => { :class => 'text_field' },
+							  :hint => 'Informe a nova senha novamente.',
+							  :hint_html => { :class => :description }  %>
+				
+				</div>
+				
+			    <p><%= f.submit "Cadastre-me" %></p>
+							
+			<% end %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+			<%= render :partial => "devise/shared/links" %>
+		</div>		
+	</div>
+</div>
 
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
-
-  <p><%= f.label :senha %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :confirmacao_de_senha %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Registrar" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>

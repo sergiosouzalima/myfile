@@ -1,12 +1,24 @@
-<h2>Reenvia instrucoes de desbloqueio</h2>
+<div ="box">
+	<div class="block" id="block-login">
+        <h2>Reenvio de instrucoes de desbloqueio</h2>
+		<div class="content login">
+			
+			<%= simple_form_for(resource, :as => resource_name, 
+			    :url => unlock_path(resource_name), :html => { :method => :post, :class => :form } ) do |f| %>
+				<br />
+				<div class="group">
+				  <%= f.input :email, 
+				              :label_html => { :class => :label }, 
+				              :input_html => { :class => 'text_field' },
+				              :hint => 'Informe seu email.',
+				              :hint_html => { :class => :description }  %>
+				</div>
+				
+			    <p><%= f.submit "Reenvie-me instrucoes de desbloqueio" %></p>
+							
+			<% end %>
 
-<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
-
-  <p><%= f.submit "Reenviar instrucoes de desbloqueio" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+			<%= render :partial => "devise/shared/links" %>
+		</div>		
+	</div>
+</div>

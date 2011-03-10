@@ -1,9 +1,7 @@
 Myfile::Application.routes.draw do
   resources :occupations
-
   resources :organizations
   resources :filekinds
-
   devise_for :users
   root :to => "pages#home"
 

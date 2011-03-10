@@ -204,8 +204,12 @@ pt-BR:
         organization_id: "Id"
         name: "Descricao"
       occupation:
-          occupation_id: "Id"
-          name: "Descricao"        
+        occupation_id: "Id"
+        name: "Descricao" 
+      user:
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Confirmacao Senha"
       _all:
         updated_at: "Atualizado em"
         created_at: "Criado em"
