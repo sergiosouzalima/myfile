@@ -13,7 +13,7 @@ module Myfile
     # -- all .rb files in that directory are automatically loaded.
     
     config.to_prepare do
-      Devise::SessionsController.layout "devise_layout"
+      Devise::SessionsController.layout "sign"
     end  
     
     config.i18n.default_locale = "pt-BR"
