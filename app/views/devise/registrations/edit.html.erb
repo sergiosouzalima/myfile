@@ -1,26 +1,62 @@
-<h2>Edita <%= resource_name.to_s.humanize %></h2>
+<div ="box">
+	<div class="block" id="block-login">
+        <h2>Edita <%= resource_name.to_s.humanize %></h2>
+		<div class="content login">
+			
+			<%= simple_form_for(resource, :as => resource_name, 
+			    :url => registration_path(resource_name), 
+			    :html => { :method => :put, :class => :form } ) do |f| %>
+				<br />
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+				<div class="group">
+				  <%= f.input :email, 
+				              :label_html => { :class => :label }, 
+				              :input_html => { :class => 'text_field' },
+				              :hint => 'Informe seu email.',
+				              :hint_html => { :class => :description }  %>
+				</div>
+				
+				<div class="group">
+				  <%= f.input :password, 
+							  :label_html => { :class => :label }, 
+							  :input_html => { :class => 'text_field' },
+							  :hint => 'Informe a nova senha.',
+							  :hint_html => { :class => :description }  %>
+				
+				</div>
+				
+				<div class="group">
+				  <%= f.input :password_confirmation, 
+							  :label_html => { :class => :label }, 
+							  :input_html => { :class => 'text_field' },
+							  :hint => 'Informe a nova senha novamente.',
+							  :hint_html => { :class => :description }  %>
+				
+				</div>
+				
+				<div class="group">
+				  <%= f.input :current_password, 
+							  :label_html => { :class => :label }, 
+							  :input_html => { :class => 'text_field' },
+							  :hint => 'Precisamos de sua senha atual para confirmar a mudanca.',
+							  :hint_html => { :class => :description }  %>
+				
+				</div>				
+				
+			    <p><%= f.submit "Atualiza" %></p>
+							
+			<% end %>
+			
+			<h3>Cancele minha conta</h3>
 
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+			<p>Infeliz? <%= link_to "Cancele minha conta", registration_path(resource_name), 
+			                :confirm => "Tem certeza?", :method => :delete %>.</p>	
 
-  <p><%= f.label :senha %> <i>(deixe em branco se voce nao quer muda-la)</i><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :confirmacao_de_senha %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :senha_atual %> <i>(precisamos de sua senha atual para confirmar a mudanca)</i><br />
-  <%= f.password_field :current_password %></p>
-
-  <p><%= f.submit "Atualiza" %></p>
-<% end %>
-
-<h3>Cancele minha conta</h3>
-
-<p>Infeliz? <%= link_to "Cancele minha conta", registration_path(resource_name), 
-                :confirm => "Tem certeza?", :method => :delete %>.</p>
-
-<%= link_to "Voltar", :back %>
+			<% if user_signed_in? -%>
+			  <%= link_to 'Home', root_path %>
+			<% else %>
+			  <%= link_to "Login", new_session_path(resource_name) %>
+			<% end -%>
+		</div>		
+	</div>
+</div>

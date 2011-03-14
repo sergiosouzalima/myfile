@@ -4,6 +4,7 @@ class FilekindsController < ApplicationController
   # GET /filekinds
   # GET /filekinds.xml
   def index
+
     @filekinds = Filekind.accessible_by(current_ability).search(params[:search]).
                 paginate(:per_page => 5, :page => params[:page])                    
   end

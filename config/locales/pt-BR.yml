@@ -210,6 +210,7 @@ pt-BR:
         email: "Email"
         password: "Senha"
         password_confirmation: "Confirmacao Senha"
+        current_password: "Senha Atual"
       _all:
         updated_at: "Atualizado em"
         created_at: "Criado em"

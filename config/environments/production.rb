@@ -1,3 +1,4 @@
+require "#{Rails.root}/lib/get_email_config"
 Myfile::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
@@ -53,6 +54,8 @@ Myfile::Application.configure do
   config.action_mailer.default_url_options = 
     { :host => Rails.env.production? ? 'myfile.webbyapp.com' : 'localhost:3000' }
 	
+	email_config = GetEmailConfig.new
+	
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
@@ -60,8 +63,8 @@ Myfile::Application.configure do
     :port => '587',   
     :authentication => :plain,
     :domain => 'gmail.com',
-    :user_name => 'sergiosouzalima@gmail.com',
-    :password => 'xxxxxx'
+    :user_name => email_config.email,
+    :password => email_config.password
   }
 	
 end
