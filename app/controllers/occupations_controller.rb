@@ -4,7 +4,8 @@ class OccupationsController < ApplicationController
   # GET /occupations
   # GET /occupations.xml
   def index
-    @occupations = Occupation.paginate :page => params[:page], :per_page => 5
+    @occupations = Occupation.accessible_by(current_ability).search(params[:search]).
+                 paginate(:per_page => 5, :page => params[:page])  
   end
 
   # GET /occupations/1
@@ -38,6 +39,7 @@ class OccupationsController < ApplicationController
   # POST /occupations.xml
   def create
     @occupation = Occupation.new(params[:occupation])
+    @occupation.user_id = current_user.id  
 
     respond_to do |format|
       if @occupation.save
