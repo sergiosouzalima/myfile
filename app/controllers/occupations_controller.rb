@@ -4,7 +4,7 @@ class OccupationsController < ApplicationController
   # GET /occupations
   # GET /occupations.xml
   def index
-    @occupations = Occupation.accessible_by(current_ability).search(params[:search]).
+    @occupations = Occupation.accessible_by(current_ability).
                  paginate(:per_page => 5, :page => params[:page])  
   end
 
