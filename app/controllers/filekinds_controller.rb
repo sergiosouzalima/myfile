@@ -1,83 +1,53 @@
 class FilekindsController < ApplicationController
   before_filter :authenticate_user!
+  respond_to :html, :xml, :js
     
-  # GET /filekinds
-  # GET /filekinds.xml
   def index
-
     @filekinds = Filekind.accessible_by(current_ability).search(params[:search]).
-                paginate(:per_page => 5, :page => params[:page])                    
+                 paginate(:per_page => 5, :page => params[:page])    
+    respond_with @filekinds                     
   end
 
-  # GET /filekinds/1
-  # GET /filekinds/1.xml
   def show
     @filekind = Filekind.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @filekind }
-    end
+    respond_with @filekind
   end
 
-  # GET /filekinds/new
-  # GET /filekinds/new.xml
   def new
     @filekind = Filekind.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @filekind }
-    end
+    respond_with @filekind
   end
 
-  # GET /filekinds/1/edit
   def edit
     @filekind = Filekind.find(params[:id])
   end
 
-  # POST /filekinds
-  # POST /filekinds.xml
   def create
     @filekind = Filekind.new(params[:filekind])
     @filekind.user_id = current_user.id
-
-    respond_to do |format|
-      if @filekind.save
-        format.html { redirect_to(@filekind, :notice => 'Filekind was successfully created.') }
-        format.xml  { render :xml => @filekind, :status => :created, :location => @filekind }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @filekind.errors, :status => :unprocessable_entity }
-      end
-    end
+    
+    if @filekind.save
+      flash[:notice] =  Filekind.model_name.human.titleize + ' criado com sucesso.'
+      respond_with @filekind
+    else
+      render :action => :new 
+    end    
   end
 
-  # PUT /filekinds/1
-  # PUT /filekinds/1.xml
   def update
     @filekind = Filekind.find(params[:id])
-
-    respond_to do |format|
-      if @filekind.update_attributes(params[:filekind])
-        format.html { redirect_to(@filekind, :notice => 'Filekind was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @filekind.errors, :status => :unprocessable_entity }
-      end
-    end
+    
+    if @filekind.update_attributes params[:filekind]
+      flash[:notice] = Filekind.model_name.human.titleize + ' alterado com sucesso.'
+      respond_with @filekind
+    else
+      render :action => :edit
+    end    
   end
 
-  # DELETE /filekinds/1
-  # DELETE /filekinds/1.xml
   def destroy
     @filekind = Filekind.find(params[:id])
     @filekind.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(filekinds_url) }
-      format.xml  { head :ok }
-    end
+    respond_with @filekind
   end
 end

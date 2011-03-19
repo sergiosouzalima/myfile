@@ -1,82 +1,53 @@
 class OrganizationsController < ApplicationController
   before_filter :authenticate_user!
-    
-  # GET /organizations
-  # GET /organizations.xml
+  respond_to :html, :xml, :js
+   
   def index
     @organizations = Organization.accessible_by(current_ability).
-                 paginate(:per_page => 5, :page => params[:page])
+                 paginate(:per_page => 5, :page => params[:page])  
+    respond_with @organizations               
   end
 
-  # GET /organizations/1
-  # GET /organizations/1.xml
   def show
     @organization = Organization.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @organization }
-    end
+    respond_with @organization
   end
 
-  # GET /organizations/new
-  # GET /organizations/new.xml
   def new
     @organization = Organization.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @organization }
-    end
+    respond_with @organization
   end
 
-  # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
   end
 
-  # POST /organizations
-  # POST /organizations.xml
   def create
     @organization = Organization.new(params[:organization])
-    @organization.user_id = current_user.id
-
-    respond_to do |format|
-      if @organization.save
-        format.html { redirect_to(@organization, :notice => 'Organization was successfully created.') }
-        format.xml  { render :xml => @organization, :status => :created, :location => @organization }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @organization.errors, :status => :unprocessable_entity }
-      end
+    @organization.user_id = current_user.id  
+    
+    if @organization.save
+      flash[:notice] =  Organization.model_name.human.titleize + ' criado com sucesso.'
+      respond_with @organization
+    else
+      render :action => :new 
     end
   end
 
-  # PUT /organizations/1
-  # PUT /organizations/1.xml
   def update
     @organization = Organization.find(params[:id])
 
-    respond_to do |format|
-      if @organization.update_attributes(params[:organization])
-        format.html { redirect_to(@organization, :notice => 'Organization was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @organization.errors, :status => :unprocessable_entity }
-      end
+    if @organization.update_attributes params[:organization]
+      flash[:notice] = Organization.model_name.human.titleize + ' alterado com sucesso.'
+      respond_with @organization
+    else
+      render :action => :edit
     end
   end
 
-  # DELETE /organizations/1
-  # DELETE /organizations/1.xml
   def destroy
     @organization = Organization.find(params[:id])
     @organization.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(organizations_url) }
-      format.xml  { head :ok }
-    end
+    respond_with @organization
   end
 end

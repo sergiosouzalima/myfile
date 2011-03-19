@@ -186,6 +186,12 @@ pt-BR:
 
   activerecord:
     errors:
+      template:
+        header:
+          one: "Não foi possível gravar %{model}: 1 erro"
+          other: "Não foi possível gravar %{model}: %{count} erros."
+        body: "Por favor, verifique o(s) seguinte(s) campo(s):"        
+        
       messages:
         taken: "já está em uso"
         record_invalid: "A validação falhou: %{errors}"        
