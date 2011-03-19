@@ -4,7 +4,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.xml
   def index
-    @organizations = Organization.paginate :page => params[:page], :per_page => 5
+    @organizations = Organization.accessible_by(current_ability).
+                 paginate(:per_page => 5, :page => params[:page])
   end
 
   # GET /organizations/1
@@ -38,6 +39,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations.xml
   def create
     @organization = Organization.new(params[:organization])
+    @organization.user_id = current_user.id
 
     respond_to do |format|
       if @organization.save
