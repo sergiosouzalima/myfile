@@ -5,7 +5,7 @@ class OccupationsController < ApplicationController
   def index
     @occupations = Occupation.accessible_by(current_ability).
                  paginate(:per_page => 5, :page => params[:page])  
-    respond_with @occupations               
+    respond_with @occupations            
   end
 
   def show
