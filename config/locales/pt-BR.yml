@@ -196,11 +196,15 @@ pt-BR:
         taken: "já está em uso"
         record_invalid: "A validação falhou: %{errors}"        
     models:
+      datafile: "arquivo"
       filekind: "tipo de arquivo"
       organization: "organizacao"
       occupation: "ocupacao"
       user: "usuario"
     attributes:
+      datafile:
+        datafile_id: "Id"
+        name: "Descricao"
       filekind:
         filekind_id: "Id"
         name: "Descricao"

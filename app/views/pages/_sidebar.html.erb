@@ -3,9 +3,10 @@
   <h3>Links</h3>
   <ul class="navigation">
     <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to Filekind.model_name.human, filekinds_path %></li>
-    <li><%= link_to Organization.model_name.human, organizations_path %></li>
-    <li><%= link_to Occupation.model_name.human, occupations_path %></li>
+    <li><%= link_to Datafile.model_name.human.capitalize, datafiles_path %></li>
+    <li><%= link_to Filekind.model_name.human.capitalize, filekinds_path %></li>
+    <li><%= link_to Organization.model_name.human.capitalize, organizations_path %></li>
+    <li><%= link_to Occupation.model_name.human.capitalize, occupations_path %></li>
     <% if user_signed_in? -%>
       <li>
         <%= link_to 'Sign out', destroy_user_session_path %>

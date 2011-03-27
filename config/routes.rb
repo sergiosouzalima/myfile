@@ -1,4 +1,6 @@
 Myfile::Application.routes.draw do
+  resources :datafiles
+
   resources :occupations
   resources :organizations
   resources :filekinds
