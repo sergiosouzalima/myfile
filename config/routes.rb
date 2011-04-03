@@ -1,4 +1,6 @@
 Myfile::Application.routes.draw do
+  resources :contactkinds
+
   resources :datafiles
 
   resources :occupations

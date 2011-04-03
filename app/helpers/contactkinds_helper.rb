@@ -1,0 +1,2 @@
+module ContactkindsHelper
+end

@@ -201,7 +201,11 @@ pt-BR:
       organization: "organizacao"
       occupation: "ocupacao"
       user: "usuario"
+      contactkind: "Tipo de Contato"
     attributes:
+      contactkind:
+        contactkind_id: "Id"
+        name: "Descricao"        
       datafile:
         datafile_id: "Id"
         name: "Descricao"

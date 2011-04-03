@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :occupations, :dependent => :destroy
   has_many :organizations, :dependent => :destroy
   has_many :datafiles, :dependent => :destroy
+  has_many :contactkinds, :dependent => :destroy
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
