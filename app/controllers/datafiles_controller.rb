@@ -10,7 +10,7 @@ class DatafilesController < ApplicationController
         joins("LEFT OUTER JOIN locals ON locals.datafile_id = datafiles.id").
         joins("LEFT OUTER JOIN contacts ON contacts.local_id = locals.id").
         where( [ "contacts.description LIKE :search_param OR locals.name LIKE :search_param OR datafiles.name LIKE :search_param",  
-          { :search_param => "%#{params[:search]}%"} ] ).group("datafiles.id")
+          { :search_param => "%#{params[:search]}%"} ] ).uniq
     end    
     @datafiles = datafiles.paginate(:per_page => 15, :page => params[:page])
     respond_with @datafiles                     

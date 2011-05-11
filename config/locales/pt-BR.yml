@@ -197,11 +197,11 @@ pt-BR:
         record_invalid: "A validação falhou: %{errors}"        
     models:
       datafile: "cadastro"
-      filekind: "tipo de arquivo"
+      filekind: "tipo de cadastro"
       organization: "organizacao"
       occupation: "ocupacao"
       user: "usuario"
-      contactkind: "tipo de Contato"
+      contactkind: "tipo de contato"
       local: "local"
       contact: "contato"
     attributes:

@@ -7,7 +7,7 @@
     <li><%= link_to Filekind.model_name.human.capitalize, filekinds_path %></li>
     <li><%= link_to Organization.model_name.human.capitalize, organizations_path %></li>
     <li><%= link_to Occupation.model_name.human.capitalize, occupations_path %></li>
-	<li><%= link_to Contactkind.model_name.human, contactkinds_path %></li>
+	<li><%= link_to Contactkind.model_name.human.capitalize, contactkinds_path %></li>
     <% if user_signed_in? -%>
       <li>
         <%= link_to 'Sign out', destroy_user_session_path %>
