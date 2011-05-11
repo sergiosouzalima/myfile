@@ -5,12 +5,11 @@ class DatafilesController < ApplicationController
   def index
     datafiles = Datafile.accessible_by(current_ability)
     unless params[:search].blank?
-      #Rails.logger.debug( "Parametro ID => #{params[:search].blank?}" )
       datafiles = datafiles.
         joins("LEFT OUTER JOIN locals ON locals.datafile_id = datafiles.id").
         joins("LEFT OUTER JOIN contacts ON contacts.local_id = locals.id").
-        where( [ "contacts.description LIKE :search_param OR locals.name LIKE :search_param OR datafiles.name LIKE :search_param",  
-          { :search_param => "%#{params[:search]}%"} ] ).uniq
+        where( [ "UPPER(contacts.description) LIKE :search_param OR UPPER(locals.name) LIKE :search_param OR UPPER(datafiles.name) LIKE :search_param", 
+          { :search_param => "%#{params[:search].upcase}%"} ] ).uniq
     end    
     @datafiles = datafiles.paginate(:per_page => 15, :page => params[:page])
     respond_with @datafiles                     

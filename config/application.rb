@@ -47,7 +47,7 @@ module Myfile
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-    config.my_app_version = "v 0.47"
+    config.my_app_version = "v 0.48"
     config.my_app_name = "My File - People & Organizations"
   end
 end
