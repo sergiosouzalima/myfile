@@ -1,0 +1,40 @@
+  <% show_label_cbox = show_label_or_check_box( f ) && (controller.action_name != 'show') %>
+  <tr>
+	<td valign="top">
+      <li>
+        <%= f.input :name, 
+          :disabled => controller.action_name == 'show',
+          :input_html => { :class => 'text_field' },
+          :label_html => { :class => :label }, 
+    	  :hint_html  => { :class => :description },
+	      :input_html => { :maxlength => 50 },
+	      :placeholder => "Digite um local referente aos contatos"
+        %>
+        <% if show_label_cbox %>
+            <%= f.input :_destroy, :as => :boolean, :label => 'Remove' %>
+        <% end %>
+      </li>
+    </td>
+    <td>
+      <div class="inner">
+        <table>
+		  <thead>
+            <tr>
+              <th>Contato</th>
+              <th>Tipo</th>
+              <th>
+              <% if show_label_cbox %>
+                Remove
+              <% end %>
+              </th>
+            </tr>
+		  </thead>
+          <tbody>
+            <%= f.simple_fields_for :contacts do |builder| %>
+              <%= render 'contact_fields', :f => builder %>
+            <% end -%>
+          </tbody>
+	    </table>
+      </div>
+    </td>
+  </tr>

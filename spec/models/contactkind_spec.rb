@@ -47,7 +47,7 @@ describe Contactkind do
     contactkind = Contactkind.new( @attr )
     contactkind.user_id = user
     contactkind.save
-    user.should have(1).contactkind
+    user.should have(14).contactkind
   end
   
 end

@@ -3,23 +3,45 @@ class DatafilesController < ApplicationController
   respond_to :html, :xml, :js
     
   def index
-    @datafiles = Datafile.accessible_by(current_ability).search(params[:search]).
-                 paginate(:per_page => 15, :page => params[:page])    
+    datafiles = Datafile.accessible_by(current_ability)
+    unless params[:search].blank?
+      #Rails.logger.debug( "Parametro ID => #{params[:search].blank?}" )
+      datafiles = datafiles.
+        joins("LEFT OUTER JOIN locals ON locals.datafile_id = datafiles.id").
+        joins("LEFT OUTER JOIN contacts ON contacts.local_id = locals.id").
+        where( [ "contacts.description LIKE :search_param OR locals.name LIKE :search_param OR datafiles.name LIKE :search_param",  
+          { :search_param => "%#{params[:search]}%"} ] ).group("datafiles.id")
+    end    
+    @datafiles = datafiles.paginate(:per_page => 15, :page => params[:page])
     respond_with @datafiles                     
   end
 
   def show
     @datafile = Datafile.find(params[:id])
-    respond_with @datafile
+    render :action => :edit
+    #@datafile = Datafile.find(params[:id])
+    #respond_with @datafile
   end
 
   def new
     @datafile = Datafile.new
+    2.times do
+      local = @datafile.locals.build
+      3.times { local.contacts.build }
+    end
     respond_with @datafile
   end
 
   def edit
+    @edit_show = :edit
     @datafile = Datafile.find(params[:id])
+    @datafile.locals.map do |q|
+      3.times { q.contacts.build }
+    end
+    2.times do  
+      local = @datafile.locals.build  
+      3.times { local.contacts.build }  
+    end 
   end
 
   def create
@@ -30,6 +52,7 @@ class DatafilesController < ApplicationController
       flash[:notice] =  Datafile.model_name.human.titleize + ' criado com sucesso.'
       respond_with @datafile
     else
+      1.times { @datafile.locals.build }
       render :action => :new 
     end    
   end

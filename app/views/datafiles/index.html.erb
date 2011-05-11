@@ -6,13 +6,13 @@
     </ul>
   </div>          
   <div class="content">          
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> <%= Datafile.model_name.human %></h2>
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %>: <%= Datafile.model_name.human.titleize.pluralize %></h2>
     <div class="inner">
 	  <%= form_tag datafiles_path, :method => 'get' do %>  
 	    <p>  
 	      <%= text_field_tag :search, params[:search], :size => 100  %>  
 	      <%= submit_tag "Pesquisar", :name => nil %> <br />
-	      <span class="description">digite uma descricao para a pesquisa</span>
+	      <span class="description">informe um valor para a pesquisa</span>
 	    </p>  
 	  <% end %>
       <table class="table">

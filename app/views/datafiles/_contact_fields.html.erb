@@ -1,0 +1,22 @@
+<tr>
+  <td valign="top">
+		<%= f.input :description,
+         :disabled => controller.action_name == 'show',		
+		 :label => false,
+		 :hint_html  => { :class => :description },
+		 :input_html => { :maxlength => 60, :size => 25 }, 
+		 :placeholder => "numero do telefone, fax, celular, email, ..."
+		%>
+  </td>
+  <td>
+    <%= f.association :contactkind, 
+        :disabled => controller.action_name == 'show',
+	    :label => false 
+    %>
+  </td>
+  <td valign="center">		
+		<% if show_label_or_check_box( f ) && !@disable_fields %>
+		    <%= f.input :_destroy, :disabled => controller.action_name == 'show', :as => :boolean, :label => false %>
+		<% end %>
+  </td>
+</tr>

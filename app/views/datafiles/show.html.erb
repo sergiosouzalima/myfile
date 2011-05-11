@@ -11,6 +11,16 @@
         <p>
           <b><%= t("activerecord.attributes.datafile.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
           <%= @datafile.name %>
+          <div class="inner">
+	        <b><%= Local.model_name.human %></b>
+            <div class="inner">
+		    <ol>
+		      <% @datafile.locals.each do |l| %>  
+		        <li><%= l.name %></li>  
+		      <% end %>  
+		    </ol>
+		    </div>
+		  </div>
         </p>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_datafile_path(@datafile), :class => "button" %> 

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+  local: 
+  contactkind: 
+
+two:
+  description: MyString
+  local: 
+  contactkind: 
