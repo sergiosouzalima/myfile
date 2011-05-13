@@ -16,25 +16,27 @@
       </li>
     </td>
     <td>
-      <div class="inner">
-        <table>
-		  <thead>
-            <tr>
-              <th>Contato</th>
-              <th>Tipo</th>
-              <th>
-              <% if show_label_cbox %>
-                Remove
-              <% end %>
-              </th>
-            </tr>
-		  </thead>
-          <tbody>
-            <%= f.simple_fields_for :contacts do |builder| %>
-              <%= render 'contact_fields', :f => builder %>
-            <% end -%>
-          </tbody>
-	    </table>
-      </div>
+	  <% unless f.object.contacts.empty? %>
+        <div class="inner">
+          <table>
+		    <thead>
+              <tr>
+                <th>Contato</th>
+                <th>Tipo</th>
+                <th>
+                <% if show_label_cbox %>
+                  Remove
+                <% end %>
+                </th>
+              </tr>
+		    </thead>
+            <tbody>
+              <%= f.simple_fields_for :contacts do |builder| %>
+                <%= render 'contact_fields', :f => builder %>
+              <% end -%>
+            </tbody>
+	      </table>
+        </div>
+      <% end %>
     </td>
   </tr>

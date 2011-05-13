@@ -18,10 +18,11 @@
       <table class="table">
         <tr>             
           <th class="first">ID</th>
-                    <th>
+          <th>
             <%= t("activerecord.attributes.datafile.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th><%= t("web-app-theme.updated_at", :default => "Updated at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @datafiles.each do |datafile| -%>
@@ -32,8 +33,11 @@
                     <td>
             <%= link_to datafile.name, datafile_path(datafile) %>
           </td>
-                    <td>
+          <td>
             <%= l(datafile.created_at, :format => :short) %>
+          </td>
+          <td>
+            <%= l(datafile.updated_at, :format => :short) %>
           </td>
           <td class="last">
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", datafile_path(datafile) %> |
