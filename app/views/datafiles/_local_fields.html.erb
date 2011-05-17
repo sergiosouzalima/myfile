@@ -1,4 +1,3 @@
-  <% show_label_cbox = show_label_or_check_box( f ) && (controller.action_name != 'show') %>
   <tr>
 	<td valign="top">
       <li>
@@ -10,7 +9,7 @@
 	      :input_html => { :maxlength => 50 },
 	      :placeholder => "Digite um local referente aos contatos"
         %>
-        <% if show_label_cbox %>
+        <% if show_label_or_check_box( f ) && (controller.action_name != 'show') %>
             <%= f.input :_destroy, :as => :boolean, :label => 'Remove' %>
         <% end %>
       </li>
@@ -24,7 +23,7 @@
                 <th>Contato</th>
                 <th>Tipo</th>
                 <th>
-                <% if show_label_cbox %>
+                <% if show_label_or_check_box( f ) && (controller.action_name != 'show') %>
                   Remove
                 <% end %>
                 </th>

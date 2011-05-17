@@ -5,7 +5,7 @@
 		 :label => false,
 		 :hint_html  => { :class => :description },
 		 :input_html => { :maxlength => 60, :size => 25 }, 
-		 :placeholder => "numero do telefone, fax, celular, email, ..."
+		 :placeholder => "infome fone, fax, celular, email, ..."
 		%>
   </td>
   <td>
@@ -15,7 +15,7 @@
     %>
   </td>
   <td valign="center">		
-		<% if show_label_or_check_box( f ) && controller.action_name != 'show' %>
+		<% if show_label_or_check_box( f ) && (controller.action_name != 'show') %>
 		    <%= f.input :_destroy, :as => :boolean, :label => false %>
 		<% end %>
   </td>

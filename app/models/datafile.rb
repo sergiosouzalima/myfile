@@ -13,6 +13,7 @@ class Datafile < ActiveRecord::Base
     # By using this we can create, update and destroy locals when we 
     # update a datafile’s attributes.
  
+  default_scope :order => :name
 
   def self.search(search)  
     if search  
