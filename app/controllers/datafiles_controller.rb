@@ -3,15 +3,7 @@ class DatafilesController < ApplicationController
   respond_to :html, :xml, :js
     
   def index
-    datafiles = Datafile.accessible_by(current_ability)
-    unless params[:search].blank?
-      datafiles = datafiles.
-        joins("LEFT OUTER JOIN locals ON locals.datafile_id = datafiles.id").
-        joins("LEFT OUTER JOIN contacts ON contacts.local_id = locals.id").
-        where( [ "UPPER(contacts.description) LIKE :search_param OR UPPER(locals.name) LIKE :search_param OR UPPER(datafiles.name) LIKE :search_param", 
-          { :search_param => "%#{params[:search].upcase}%"} ] ).uniq
-    end    
-    @datafiles = datafiles.paginate(:per_page => 15, :page => params[:page])
+    @datafiles = Datafile.search( params, current_ability )
     respond_with @datafiles                     
   end
 
@@ -32,7 +24,7 @@ class DatafilesController < ApplicationController
   end
 
   def edit
-    @edit_show = :edit
+    #@edit_show = :edit
     @datafile = Datafile.find(params[:id])
     @datafile.locals.map do |q|
       3.times { q.contacts.build }

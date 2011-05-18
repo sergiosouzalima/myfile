@@ -15,11 +15,21 @@ class Datafile < ActiveRecord::Base
  
   default_scope :order => :name
 
-  def self.search(search)  
-    if search  
-      where('name LIKE ?', "%#{search}%") 
-    else  
-      scoped  
-    end  
+  def self.search(params, current_ability)
+    datafiles = Datafile.accessible_by(current_ability)
+    unless params[:search].blank?
+      datafiles = datafiles.
+        joins("LEFT OUTER JOIN locals ON locals.datafile_id = datafiles.id").
+        joins("LEFT OUTER JOIN contacts ON contacts.local_id = locals.id").
+        where( [ "UPPER(contacts.description) LIKE :search_param OR UPPER(locals.name) LIKE :search_param OR UPPER(datafiles.name) LIKE :search_param", 
+          { :search_param => "%#{params[:search].upcase}%"} ] ).uniq
+    end    
+    @datafiles = datafiles.paginate(:per_page => 15, :page => params[:page])        
+    #if search  
+    #  where('name LIKE ?', "%#{search}%") 
+    #else  
+    #  scoped  
+    #end  
   end
+  
 end
