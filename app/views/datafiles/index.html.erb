@@ -16,8 +16,7 @@
 	    </p>  
 	  <% end %>
       <table class="table">
-        <tr>             
-          <th class="first">ID</th>
+        <tr>
           <th>
             <%= t("activerecord.attributes.datafile.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
@@ -27,11 +26,10 @@
         </tr>
         <% @datafiles.each do |datafile| -%>
         <tr class="<%= cycle("odd", "even") %>">
+          <%= hidden_field_tag :datafile_id, datafile.id %>
           <td>
-            <%= datafile.id %>
-          </td>
-                    <td>
-            <%= link_to datafile.name, datafile_path(datafile) %>
+            <%= link_to truncate(datafile.name, :length => 25), datafile_path(datafile) %> |
+            <%= datafile.locals.first.contacts.first.description %>
           </td>
           <td>
             <%= l(datafile.created_at, :format => :short) %>

@@ -6,7 +6,7 @@
           :input_html => { :class => 'text_field' },
           :label_html => { :class => :label }, 
     	  :hint_html  => { :class => :description },
-	      :input_html => { :maxlength => 50 },
+	      :input_html => { :maxlength => 50, :size => 35 },
 	      :placeholder => "Digite um local referente aos contatos"
         %>
         <% if show_label_or_check_box( f ) && (controller.action_name != 'show') %>
