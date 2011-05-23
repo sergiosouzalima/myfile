@@ -24,7 +24,7 @@ class Datafile < ActiveRecord::Base
         where( [ "UPPER(contacts.description) LIKE :search_param OR UPPER(locals.name) LIKE :search_param OR UPPER(datafiles.name) LIKE :search_param", 
           { :search_param => "%#{params[:search].upcase}%"} ] ).uniq
     end    
-    @datafiles = datafiles.paginate(:per_page => 05, :page => params[:page])        
+    @datafiles = datafiles.paginate(:per_page => 10, :page => params[:page])        
     #if search  
     #  where('name LIKE ?', "%#{search}%") 
     #else  
