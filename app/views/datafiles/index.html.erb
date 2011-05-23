@@ -29,7 +29,7 @@
           <%= hidden_field_tag :datafile_id, datafile.id %>
           <td>
             <%= link_to truncate(datafile.name, :length => 25), datafile_path(datafile) %> |
-            <%= datafile.locals.first.contacts.first.description %>
+            <%= show_first_contact_description( datafile ) %>
           </td>
           <td>
             <%= l(datafile.created_at, :format => :short) %>
