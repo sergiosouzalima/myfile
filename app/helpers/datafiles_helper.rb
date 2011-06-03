@@ -12,4 +12,12 @@ module DatafilesHelper
     end
   end
   
+  def show_second_contact_description( datafile )
+    if datafile.locals.any?
+      unless datafile.locals.first.contacts.second.blank?
+        datafile.locals.first.contacts.second.description
+      end
+    end
+  end
+  
 end

@@ -20,7 +20,12 @@
           <th>
             <%= t("activerecord.attributes.datafile.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th>
+            Contato
+          </th>
+          <th>
+            Contato
+          </th>
           <th><%= t("web-app-theme.updated_at", :default => "Updated at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
@@ -28,12 +33,14 @@
         <tr class="<%= cycle("odd", "even") %>">
           <%= hidden_field_tag :datafile_id, datafile.id %>
           <td>
-            <%= link_to truncate(datafile.name, :length => 25), datafile_path(datafile) %> |
+            <%= link_to truncate(datafile.name, :length => 35), datafile_path(datafile) %>
+          </td>
+          <td>
             <%= show_first_contact_description( datafile ) %>
           </td>
           <td>
-            <%= l(datafile.created_at, :format => :short) %>
-          </td>
+	        <%= show_second_contact_description( datafile ) %>
+	      </td>
           <td>
             <%= l(datafile.updated_at, :format => :short) %>
           </td>
