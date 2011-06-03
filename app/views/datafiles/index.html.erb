@@ -15,7 +15,7 @@
 	      <span class="description">informe um valor para a pesquisa</span>
 	    </p>  
 	  <% end %>
-      <table class="table">
+      <table class="table" border=0>
         <tr>
           <th>
             <%= t("activerecord.attributes.datafile.name", :default => t("activerecord.labels.name", :default => "Name")) %>
@@ -32,8 +32,8 @@
         <% @datafiles.each do |datafile| -%>
         <tr class="<%= cycle("odd", "even") %>">
           <%= hidden_field_tag :datafile_id, datafile.id %>
-          <td>
-            <%= link_to truncate(datafile.name, :length => 35), datafile_path(datafile) %>
+          <td width="30%">
+            <%= link_to truncate(datafile.name, :length => 33), datafile_path(datafile) %>
           </td>
           <td>
             <%= show_first_contact_description( datafile ) %>
@@ -41,11 +41,10 @@
           <td>
 	        <%= show_second_contact_description( datafile ) %>
 	      </td>
-          <td>
+          <td width="15%">
             <%= l(datafile.updated_at, :format => :short) %>
           </td>
-          <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", datafile_path(datafile) %> |
+          <td class="last" width="13%">
             <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_datafile_path(datafile) %> |
             <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", datafile_path(datafile), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
           </td>
