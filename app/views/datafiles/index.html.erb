@@ -33,7 +33,7 @@
         <tr class="<%= cycle("odd", "even") %>">
           <%= hidden_field_tag :datafile_id, datafile.id %>
           <td width="25%">
-            <%= link_to truncate(datafile.name, :length => 28), datafile_path(datafile) %>
+            <%= link_to truncate(datafile.name, :length => 27), edit_datafile_path(datafile) %>
           </td>
           <td>
             <%= show_first_contact_description( datafile ) %>
@@ -45,7 +45,6 @@
             <%= l(datafile.updated_at, :format => :short) %>
           </td>
           <td class="last" width="13%">
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_datafile_path(datafile) %> |
             <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", datafile_path(datafile), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
           </td>
         </tr>          
