@@ -3,6 +3,8 @@ class DatafilesController < ApplicationController
   respond_to :html, :xml, :js
     
   def index
+    session[:previous_search] = params[:search] if params[:search]
+    params[:search] = session[:previous_search]
     @datafiles = Datafile.search( params, current_ability )
     respond_with @datafiles                     
   end
@@ -64,4 +66,5 @@ class DatafilesController < ApplicationController
     @datafile.destroy
     respond_with @datafile
   end
+  
 end

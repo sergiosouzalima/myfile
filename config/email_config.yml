@@ -1,0 +1,11 @@
+development:
+  email: sergiosouzalima@gmail.com
+  password: sergiolima-2011
+
+test:
+  email: sergiosouzalima@gmail.com
+  password: sergiolima-2011
+    
+production:
+  email: sergiosouzalima@gmail.com
+  password: sergiolima-2011

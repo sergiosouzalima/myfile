@@ -7,6 +7,7 @@ Myfile::Application.routes.draw do
   resources :organizations
   resources :filekinds
   devise_for :users
+  
   root :to => "pages#home"
 
   # The priority is based upon order of creation:
