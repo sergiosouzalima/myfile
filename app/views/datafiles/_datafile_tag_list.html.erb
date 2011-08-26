@@ -1,0 +1,9 @@
+<% unless controller.action_name == 'show' %>
+  <%= f.input :tag_list, 
+    :label_html => { :class => :label, :style => 'display:none' }, 
+    :input_html => { :class => 'text_field', :style => 'display:none', :maxlength => 50, :size => 35 },
+    :placeholder => "digite rotulos separados por vírgula. Ex.: office, home, important_contact" %>
+<% else %>
+  <%= f.label t("general.datafile_tag_list_field") %>:
+  <%= @datafile.tag_list %>
+<% end %>

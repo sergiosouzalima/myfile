@@ -3,10 +3,12 @@ class Datafile < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :name, :presence => true, :length => { :maximum => 100 }
   validates_uniqueness_of :name, :scope => :user_id
-  attr_accessible :name
+  attr_accessible :name, :tag_list
 
   has_many :locals, :dependent => :destroy
   has_many :contacts, :through => :locals
+  
+  acts_as_taggable 
   
   attr_accessible :locals_attributes  
   accepts_nested_attributes_for :locals, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true

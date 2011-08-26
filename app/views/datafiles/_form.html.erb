@@ -9,6 +9,15 @@
                   :disabled => controller.action_name == 'show',
 		          :label_html => { :class => :label }, 
 		          :input_html => { :class => 'text_field' } %>
+		
+	 <div class="group navform wat-cf">
+       <% unless controller.action_name == 'show' %>
+         <%= link_to t('general.datafile_tag_list_field'), '#', 
+                     :onclick => "$('#datafile_tag_list').slideDown(); $('#show_tags').hide();", 
+                     :class => "link_button", :id => 'show_tags' %>
+       <% end %>
+       <%= render 'datafile_tag_list', :f => f %>	
+     </div>
 
       <div class="inner">
         <div class="inner">
