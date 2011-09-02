@@ -1,3 +1,9 @@
+<script>
+$(document).ready(function() {
+    $('input:visible:enabled:first').focus();
+});
+</script>
+
 <div class="inner">
 	
   <%= simple_form_for @datafile, :html => { :class => :form } do |f| -%>
@@ -10,29 +16,29 @@
 		          :label_html => { :class => :label }, 
 		          :input_html => { :class => 'text_field' } %>
 		
-	 <div class="group navform wat-cf">
-       <% unless controller.action_name == 'show' %>
-         <%= link_to t('general.datafile_tag_list_field'), '#', 
-                     :onclick => "$('#datafile_tag_list').slideDown(); $('#show_tags').hide();", 
-                     :class => "link_button", :id => 'show_tags' %>
-       <% end %>
-       <%= render 'datafile_tag_list', :f => f %>	
-     </div>
+	  <div class="group navform wat-cf">
+        <% unless controller.action_name == 'show' %>
+          <%= f.label t('general.datafile_tag_list_field') %>
+          <!-- link_to t('general.datafile_tag_list_field'), '#', 
+                      :onclick => "$('#datafile_tag_list').slideDown(); $('#show_tags').hide();", 
+                      :class => "link_button", :id => 'show_tags' -->
+        <% end %>
+        <%= render 'datafile_tag_list', :f => f %>	
+      </div>
 
       <div class="inner">
-        <div class="inner">
-	      <table align=center>
-		    <tbody>
-	          <ol> 
-                <%= f.simple_fields_for :locals do |builder| %> 
-                  <%= render 'local_fields', :f => builder %>   
-                <% end -%>
-              </ol>
-	        </tbody>
-	      </table>
-        </div>
+	    <table align=center>
+		  <tbody>
+	        <ol> 
+              <%= f.simple_fields_for :locals do |builder| %> 
+                <%= render 'local_fields', :f => builder %>   
+              <% end -%>
+            </ol>
+	      </tbody>
+	    </table>
       </div>
-    </div>
+
+    </div> <!-- class group -->
 
     <div class="group navform wat-cf">
 	  <% unless controller.action_name == 'show' %>
@@ -42,9 +48,11 @@
         </button>
         <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
       <% end %>
-	  <%= link_to t("web-app-theme.cancel", :default => "Cancel"), datafiles_path, :class => "text_button_padding link_button" %>
+	  <%= link_to t("web-app-theme.cancel", :default => "Cancel"), 
+	      datafiles_path, 
+	      :class => "text_button_padding link_button" %>
     </div>
 
   <% end -%>
 
-</div>
+</div> <!-- class inner -->

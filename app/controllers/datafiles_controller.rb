@@ -12,12 +12,11 @@ class DatafilesController < ApplicationController
   def show
     @datafile = Datafile.find(params[:id])
     render :action => :edit
-    #@datafile = Datafile.find(params[:id])
-    #respond_with @datafile
   end
 
   def new
     @datafile = Datafile.new
+    @tags = tags_all
     2.times do
       local = @datafile.locals.build
       3.times { local.contacts.build }
@@ -26,8 +25,9 @@ class DatafilesController < ApplicationController
   end
 
   def edit
-    #@edit_show = :edit
     @datafile = Datafile.find(params[:id])
+    @tags = tags_all
+    
     @datafile.locals.map do |q|
       3.times { q.contacts.build }
     end
@@ -52,7 +52,7 @@ class DatafilesController < ApplicationController
 
   def update
     @datafile = Datafile.find(params[:id])
-    
+       
     if @datafile.update_attributes params[:datafile]
       flash[:notice] = Datafile.model_name.human.titleize + ' alterado com sucesso.'
       respond_with @datafile
@@ -66,5 +66,16 @@ class DatafilesController < ApplicationController
     @datafile.destroy
     respond_with @datafile
   end
-  
+
+
+private 
+  def tags_all
+    current_user.datafiles.tag_counts_on(:tags)
+  end
+         
 end
+
+#  x = '  ,ti,     negocio,   friend, tam, gp, itil   '
+# lstrip.rstrip.gsub( /^,/, '' ).gsub( /,$/, '' ).gsub(/\s{2,}/,' ')
+
+

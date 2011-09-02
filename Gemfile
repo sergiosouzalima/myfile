@@ -6,6 +6,8 @@ gem 'devise'
 gem "simple_form"
 gem "cancan"
 gem 'acts-as-taggable-on', '~>2.1.0'
+#gem 'acts-as-taggable-on', :git => "git://github.com/kuldarkrabbi/acts-as-taggable-on.git"
+
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'

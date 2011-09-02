@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   
   after_create :create_contact_kinds
   
+  acts_as_tagger
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
