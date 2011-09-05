@@ -1,8 +1,10 @@
+
 <script>
 $(document).ready(function() {
     $('input:visible:enabled:first').focus();
 });
 </script>
+
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
@@ -50,7 +52,10 @@ $(document).ready(function() {
             <%= l(datafile.updated_at, :format => :short) %>
           </td>
           <td class="last" width="13%">
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", datafile_path(datafile), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+            <%= link_to "#{t("web-app-theme.delete", :default => 'Delete')}", 
+                datafile_path(datafile), 
+                :method => :delete, 
+                :confirm => "#{t("web-app-theme.confirm", :default => 'Are you sure?')}" %>
           </td>
         </tr>          
         <% end -%>
@@ -67,9 +72,3 @@ $(document).ready(function() {
 </div>
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>
-
-<script type="text/javascript"> 
-  $('search').focus(); 
-</script>
-
-
