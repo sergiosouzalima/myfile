@@ -1,0 +1,21 @@
+<tr class="<%= cycle("odd", "even") %>" id="<%= datafile.id %>">
+  <td width="25%">
+    <%= link_to truncate(datafile.name, :length => 27), edit_datafile_path(datafile) %>
+  </td>
+  <td>
+    <%= show_first_contact_description( datafile ) %>
+  </td>
+  <td>
+    <%= show_second_contact_description( datafile ) %>
+  </td>
+  <td width="15%">
+    <%= l(datafile.updated_at, :format => :short) %>
+  </td>
+  <td class="last" width="13%">    
+    <%= link_to "#{t("web-app-theme.delete", :default => 'Delete')}", 
+        datafile_path(datafile), 
+        :method => :delete,
+        :remote => true, 
+        :confirm => "#{t("web-app-theme.confirm", :default => 'Are you sure?')}" %>
+  </td>
+</tr>

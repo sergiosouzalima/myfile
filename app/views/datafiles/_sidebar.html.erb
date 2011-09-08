@@ -1,15 +1,22 @@
 <div class="block notice">
   <h3>Ajuda</h3>
   <div class="content">
-    <p>Cadastro de pessoas ou organizações.</p>
+    <p>Cadastro de pessoas ou organizações tais como empresas, escolas, instituições.</p>
   </div>
 </div>
 <div class="block">
-  <h3>Links</h3>
+  <h3>Links <%= t("general.datafile_tag_list_field") %></h3>
   <ul class="navigation">	
-    <li><%= link_to Filekind.model_name.human.capitalize, filekinds_path %></li>
-    <li><%= link_to Organization.model_name.human.capitalize, organizations_path %></li>
-    <li><%= link_to Occupation.model_name.human.capitalize, occupations_path %></li>
-    <li><%= link_to Contactkind.model_name.human.capitalize, contactkinds_path %></li>
+    <% tags = current_user.datafiles.tag_counts_on(:tags) %>
+    <% tags.each do |tag| %>
+      <li>
+	    <%= link_to tag.name, 
+	        :controller => "datafiles", 
+	        :action => "index",
+            :search => tag.name,
+            :method => :get 
+        %>
+      </li>
+    <% end %>
   </ul>
 </div>

@@ -5,16 +5,19 @@ $(document).ready(function() {
 });
 </script>
 
-<div class="block">
-  <div class="secondary-navigation">
+<div id="block" class="block">
+  <div id="secondary-navigation" class="secondary-navigation">
     <ul class="wat-cf">
       <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", datafiles_path  %></li>
       <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_datafile_path %></li>
     </ul>
   </div>          
-  <div class="content">          
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %>: <%= Datafile.model_name.human.titleize.pluralize %></h2>
-    <div class="inner">
+  <div id="content" class="content">          
+    <h2 class="title">
+      <%= t("web-app-theme.all", :default => "All")  %>: 
+      <%= Datafile.model_name.human.titleize.pluralize %>
+    </h2>
+    <div id="inner" class="inner">
 	  <%= form_tag datafiles_path, :method => 'get' do %>  
 	    <p>  
 	      <%= text_field_tag :search, params[:search], :size => 100  %>  
@@ -22,10 +25,11 @@ $(document).ready(function() {
 	      <span class="description">informe um valor para a pesquisa</span>
 	    </p>  
 	  <% end %>
-      <table class="table" border=0>
+      <table id="datafile_table" class="table" border=0>
         <tr>
           <th>
-            <%= t("activerecord.attributes.datafile.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+            <%= t("activerecord.attributes.datafile.name", 
+               :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
           <th>
             Contato
@@ -36,30 +40,9 @@ $(document).ready(function() {
           <th><%= t("web-app-theme.updated_at", :default => "Updated at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
-        <% @datafiles.each do |datafile| -%>
-        <tr class="<%= cycle("odd", "even") %>">
-          <%= hidden_field_tag :datafile_id, datafile.id %>
-          <td width="25%">
-            <%= link_to truncate(datafile.name, :length => 27), edit_datafile_path(datafile) %>
-          </td>
-          <td>
-            <%= show_first_contact_description( datafile ) %>
-          </td>
-          <td>
-	        <%= show_second_contact_description( datafile ) %>
-	      </td>
-          <td width="15%">
-            <%= l(datafile.updated_at, :format => :short) %>
-          </td>
-          <td class="last" width="13%">
-            <%= link_to "#{t("web-app-theme.delete", :default => 'Delete')}", 
-                datafile_path(datafile), 
-                :method => :delete, 
-                :confirm => "#{t("web-app-theme.confirm", :default => 'Are you sure?')}" %>
-          </td>
-        </tr>          
-        <% end -%>
+		<%= render :partial => @datafiles, :locals => { :list => true } %>
       </table>
+		
       <div class="actions-bar wat-cf">
         <div class="actions">
         </div>

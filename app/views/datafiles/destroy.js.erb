@@ -1,0 +1,4 @@
+/* Highlight the new comment */
+$('#block #content #inner table#datafile_table tr#' + '<%= @datafile.id %>').effect("highlight", {}, 300);
+/* Eliminate the datafile by fading it out */
+$('#block #content #inner table#datafile_table tr#' + '<%= @datafile.id %>').fadeOut();

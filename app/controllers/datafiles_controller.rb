@@ -45,6 +45,7 @@ class DatafilesController < ApplicationController
       flash[:notice] =  Datafile.model_name.human.titleize + ' criado com sucesso.'
       respond_with @datafile
     else
+      @tags = tags_all
       1.times { @datafile.locals.build }
       render :action => :new 
     end    
@@ -64,7 +65,11 @@ class DatafilesController < ApplicationController
   def destroy
     @datafile = Datafile.find(params[:id])
     @datafile.destroy
-    respond_with @datafile
+    #respond_with @datafile
+    respond_to do |format|
+      format.html { redirect_to datafiles_path }
+      format.js 
+    end    
   end
 
 
@@ -74,8 +79,3 @@ private
   end
          
 end
-
-#  x = '  ,ti,     negocio,   friend, tam, gp, itil   '
-# lstrip.rstrip.gsub( /^,/, '' ).gsub( /,$/, '' ).gsub(/\s{2,}/,' ')
-
-
