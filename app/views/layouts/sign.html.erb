@@ -3,9 +3,6 @@
 <head>
   <title> <%= Myfile::Application.config.my_app_name %> <%= Myfile::Application.config.my_app_version%> </title>
   <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/warehouse/style", "web-app-theme/override", :cache => true %>
-  <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
-  <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" %>
-  <%= javascript_include_tag "jquery-rails.js" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -16,5 +13,9 @@
       </div>
     </div>
   </div>
+  <%= javascript_include_tag  "https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" %>  
+  <%= javascript_include_tag  "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" %>
+  <%= javascript_include_tag "jquery-rails.js" %>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>

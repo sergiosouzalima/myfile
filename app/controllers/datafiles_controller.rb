@@ -46,7 +46,7 @@ class DatafilesController < ApplicationController
       respond_with @datafile
     else
       @tags = tags_all
-      1.times { @datafile.locals.build }
+      #1.times { @datafile.locals.build }
       render :action => :new 
     end    
   end

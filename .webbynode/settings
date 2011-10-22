@@ -1,1 +1,3 @@
+database_name=myfile
 engine=rails3
+database_user=myfile

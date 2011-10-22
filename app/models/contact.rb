@@ -9,7 +9,9 @@ class Contact < ActiveRecord::Base
     puts self.contactkind_id
     puts self.description 
     puts '===================='
-    errors.add( :description, "*" ) if (contactkind.name == 'email' || contactkind.name == 'email2') && !(self.description =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)
+    if contactkind_id
+      errors.add( :description, "*" ) if (contactkind.name == 'email' || contactkind.name == 'email2') && !(self.description =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)
+    end
   end
   
 end
