@@ -58,6 +58,7 @@ class DatafilesController < ApplicationController
       flash[:notice] = Datafile.model_name.human.titleize + ' alterado com sucesso.'
       respond_with @datafile
     else
+      @tags = tags_all
       render :action => :edit
     end    
   end
